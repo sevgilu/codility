@@ -7,7 +7,7 @@ public class FindOddOccurrencesInArraySolution1 implements FindOddOccurrencesInA
 
     // aynı sayı 2 den fazla eklendiğinde hatalı çalışıyor
     @Override
-    public int solution(int[] intArray) {
+    public int findOddOccurrences(int[] intArray) {
         validateInput(intArray);
         Set<Integer> set = new HashSet<>();
         int sum = 0;

@@ -5,7 +5,7 @@ import com.suslu.codility.exception.InvalidInputException;
 //https://app.codility.com/programmers/lessons/2-arrays/odd_occurrences_in_array/
 public interface FindOddOccurrencesInArray {
 
-    int solution(int[] intArray);
+    int findOddOccurrences(int[] intArray);
 
     default void validateInput(int[] intArray) {
         if(intArray == null || intArray.length == 0)

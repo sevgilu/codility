@@ -6,7 +6,7 @@ import java.util.Set;
 public class FindOddOccurrencesInArraySolution3 implements FindOddOccurrencesInArray {
     // (after review with baris)
     @Override
-    public int solution(int[] intArray) {
+    public int findOddOccurrences(int[] intArray) {
         validateInput(intArray);
         Set<Integer> set = new HashSet<>();
 
