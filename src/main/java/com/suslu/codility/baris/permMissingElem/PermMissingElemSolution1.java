@@ -7,10 +7,12 @@ public class PermMissingElemSolution1 implements PermMissingElem {
     @Override
     public int findMissingElement(int[] A) {
         validateInput(A);
-        int missing = 0;
         int size = A.length;
-        if(size > 0 ) {
-            // From documentation: This algorithm offers O(n log(n))
+        if(size == 0) {
+            return 1;
+        } else {
+            int missing = 0;
+            // From documentation: This algorithm offers O(n * log(n))
             Arrays.sort(A);
             // O(N)
             for (int i = 0; i < size; i++) {
@@ -23,7 +25,7 @@ public class PermMissingElemSolution1 implements PermMissingElem {
             if(missing == 0){ // means last element is missing
                 missing = size+1;
             }
+            return missing;
         }
-        return missing;
     }
 }

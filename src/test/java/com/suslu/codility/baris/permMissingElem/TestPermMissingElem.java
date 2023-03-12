@@ -20,9 +20,9 @@ public abstract class TestPermMissingElem {
         Assertions.assertThrows(InvalidInputException.class, () -> permMissingElem.findMissingElement(null));
     }
     @Test
-    void shouldReturnMissingElement_AsZero_withEmptyArray(){
+    void shouldReturnMissingElement_AsOne_withEmptyArray(){
         int[] intArray = new int[]{};
-        Assertions.assertEquals(0, permMissingElem.findMissingElement(intArray));
+        Assertions.assertEquals(1, permMissingElem.findMissingElement(intArray));
     }
     @Test
     void shouldReturnMissingElement_withValidArray(){
