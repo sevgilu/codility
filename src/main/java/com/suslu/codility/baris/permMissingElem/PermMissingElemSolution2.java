@@ -1,7 +1,5 @@
 package com.suslu.codility.baris.permMissingElem;
 
-import java.util.Arrays;
-
 public class PermMissingElemSolution2 implements PermMissingElem {
 
     @Override
