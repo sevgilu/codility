@@ -6,11 +6,11 @@ import java.util.Set;
 public class FindOddOccurrencesInArraySolution2 implements FindOddOccurrencesInArray {
 
     @Override
-    public int findOddOccurrences(int[] intArray) {
-        validateInput(intArray);
+    public int findOddOccurrences(int[] A) {
+        validateInput(A);
         Set<Integer> set = new HashSet<>();
 
-        for (int i : intArray) {
+        for (int i : A) {
             if(set.contains(i)) {
                 set.remove(i);
             } else {

@@ -7,9 +7,10 @@ class TestFindOddOccurrencesInArraySolution1 extends TestFindOddOccurrencesInArr
     public TestFindOddOccurrencesInArraySolution1() {
         super(new FindOddOccurrencesInArraySolution1());
     }
+    @Override
     @Disabled
     @Test
-    void solution_shouldReturnUnpairedNumber_withArrayOfMixedNumbers_whenUnpairedExist3Times(){
+    void shouldReturnUnpairedNumber_withArrayOfMixedNumbers_whenUnpairedExist3Times(){
     }
 
 }

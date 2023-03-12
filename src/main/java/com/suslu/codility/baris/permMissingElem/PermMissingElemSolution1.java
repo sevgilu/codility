@@ -5,18 +5,17 @@ import java.util.Arrays;
 public class PermMissingElemSolution1 implements PermMissingElem {
 
     @Override
-    public int findMissingElement(int[] intArray) {
-        validateInput(intArray);
+    public int findMissingElement(int[] A) {
+        validateInput(A);
         int missing = 0;
-        int size = intArray.length;
-
+        int size = A.length;
         if(size > 0 ) {
             // From documentation: This algorithm offers O(n log(n))
-            Arrays.sort(intArray);
+            Arrays.sort(A);
             // O(N)
             for (int i = 0; i < size; i++) {
                 int n = i+1;
-                if(n != intArray[i]) {
+                if(n != A[i]) {
                     missing = n;
                     break;
                 }
@@ -25,7 +24,6 @@ public class PermMissingElemSolution1 implements PermMissingElem {
                 missing = size+1;
             }
         }
-
         return missing;
     }
 }
