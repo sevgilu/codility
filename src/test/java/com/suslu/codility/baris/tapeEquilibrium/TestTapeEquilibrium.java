@@ -33,7 +33,7 @@ public abstract class TestTapeEquilibrium {
     }
     @Test
     void shouldThrowException_withArray_havingValueLessThanMinus1000(){
-        int[] intArray = new int[]{1,-2,-1001,-1, };
+        int[] intArray = new int[]{1,-2,-1001,-1};
         Assertions.assertThrows(InvalidInputException.class, () -> tapeEquilibrium.findMinimumAbsoluteDifference(intArray));
     }
     @Test

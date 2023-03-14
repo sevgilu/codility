@@ -11,18 +11,18 @@ public class PermMissingElemSolution3 implements PermMissingElem {
         if(size == 0) {
             return 1;
         } else{
-            int n = size + 1;
+            long n = size + 1;
             long expectedSum = (n * (n +1)) / 2;
-//            long actualSum = Arrays.stream(A)
-//                    .mapToLong(i -> i)
-//                    .sum();
-            long[] longArray = Arrays.stream(A)
+            long actualSum = Arrays.stream(A)
                     .mapToLong(i -> i)
-                   .toArray();
-            long actualSum = Arrays.stream(longArray).sum();
+                    .sum();
+            long result = expectedSum-actualSum;
 
-            return (int) (expectedSum-actualSum);
+            return (int) result;
         }
     }
 
+    public static void main(String[] args) {
+        System.out.println(Integer.MAX_VALUE);
+    }
 }
