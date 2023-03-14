@@ -2,6 +2,7 @@ package com.suslu.codility.baris.tapeEquilibrium;
 
 import com.suslu.codility.exception.InvalidInputException;
 
+// https://app.codility.com/programmers/lessons/3-time_complexity/tape_equilibrium/
 public interface TapeEquilibrium {
     int findMinimumAbsoluteDifference(int[] A);
 

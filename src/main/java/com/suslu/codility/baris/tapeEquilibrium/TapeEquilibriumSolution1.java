@@ -11,24 +11,23 @@ public class TapeEquilibriumSolution1 implements TapeEquilibrium {
     @Override
     public int findMinimumAbsoluteDifference(int[] A) {
         validateInput(A);
-        boolean minDiffInitialized = false;
-        int minDiff = 0;
-        int n = A.length;
 
+        int n = A.length;
         int index = 0;
         validateInput(A[index]);
         int sumLeft = 0;
         int sumRight = Arrays.stream(A).sum();
 
+        // initalizeMinDiff
+        int minDiff = Math.abs(sumRight - (2*A[0]));
         do {
             int currentValue = A[index];
             sumLeft = sumLeft + currentValue;
             sumRight -= currentValue;
             int tempDiff = Math.abs(sumLeft - sumRight);
 
-            if(!minDiffInitialized || minDiff > tempDiff) {
+            if(minDiff > tempDiff) {
                 minDiff = tempDiff;
-                minDiffInitialized = true;
             }
             index++;
             validateInput(A[index]);

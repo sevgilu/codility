@@ -2,6 +2,7 @@ package com.suslu.codility.baris.permMissingElem;
 
 import com.suslu.codility.exception.InvalidInputException;
 
+// https://app.codility.com/programmers/lessons/3-time_complexity/perm_missing_elem/
 public interface PermMissingElem {
     int findMissingElement(int[] A);
 
