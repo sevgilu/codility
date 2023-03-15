@@ -43,7 +43,8 @@ public abstract class TestEqualizeArraySum {
         return Stream.of(
                 Arguments.of(false, new int[]{12,1,5}, new int[]{6,2,9}),
                 Arguments.of(true, new int[]{2,9,1}, new int[]{5,3,8}),
-                Arguments.of(true, new int[]{3,8,1,2}, new int[]{5,4,7,4})
+                Arguments.of(true, new int[]{3,8,1,2}, new int[]{5,4,7,4}),
+                Arguments.of(false, new int[]{3,8,1,2}, new int[]{3,8,1,8})
         );
     }
 

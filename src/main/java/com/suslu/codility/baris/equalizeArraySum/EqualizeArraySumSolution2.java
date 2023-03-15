@@ -1,8 +1,12 @@
 package com.suslu.codility.baris.equalizeArraySum;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-public class EqualizeArraySumSolution1 implements EqualizeArraySum {
+public class EqualizeArraySumSolution2 implements EqualizeArraySum {
     @Override
     public boolean isEqualizationPossible(int[] a, int[] b) {
         validateInput(a, b);
@@ -22,13 +26,16 @@ public class EqualizeArraySumSolution1 implements EqualizeArraySum {
     }
 
     private boolean doesSwitchWork(int[] arrayToDecrease, int[] arrayToIncrease, long diffToSwitch){
+        Set<Long> setToDecrease = Arrays.stream(arrayToDecrease)
+                .boxed()
+                .map(i -> Long.valueOf(i))
+                .collect(Collectors.toSet());
+
         for (int i = 0; i < arrayToIncrease.length; i++) {
-            int valueToIncrease = arrayToIncrease[i];
-            for (int j = 0; j < arrayToDecrease.length; j++) {
-                long valueToDecrease = arrayToDecrease[j];
-                if(diffToSwitch == (valueToDecrease - valueToIncrease)) {
-                    return true;
-                }
+            long toIncrease = arrayToIncrease[i];
+            long searchFor = toIncrease + diffToSwitch;
+            if( ! setToDecrease.add(searchFor)) { // desired number exits in the other data
+                return true;
             }
         }
 
