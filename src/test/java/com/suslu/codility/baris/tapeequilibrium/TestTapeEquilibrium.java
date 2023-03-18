@@ -2,9 +2,12 @@ package com.suslu.codility.baris.tapeequilibrium;
 
 import com.suslu.codility.exception.InvalidInputException;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public abstract class TestTapeEquilibrium {
 
@@ -13,71 +16,35 @@ public abstract class TestTapeEquilibrium {
     public TestTapeEquilibrium(TapeEquilibrium tapeEquilibrium) {
         this.tapeEquilibrium = tapeEquilibrium;
     }
-    @Test
-    void shouldThrowException_withNullArray(){
-        Assertions.assertThrows(InvalidInputException.class, () -> tapeEquilibrium.findMinimumAbsoluteDifference(null));
+    @ParameterizedTest
+    @MethodSource("exceptionData")
+    public void shouldThrowException(int[] A) {
+        Assertions.assertThrows(InvalidInputException.class, () -> tapeEquilibrium.findMinimumAbsoluteDifference(A));
     }
-    @Test
-    void shouldThrowException_withEmptyArray(){
-        Assertions.assertThrows(InvalidInputException.class, () -> tapeEquilibrium.findMinimumAbsoluteDifference(new int[]{}));
+    private static Stream<Arguments> exceptionData() {
+        return Stream.of(
+                Arguments.of(null, null),
+                Arguments.of(new int[0]),
+                Arguments.of(new int[]{45}),
+                Arguments.of(IntStream.range(0,100001).toArray()),
+                Arguments.of(new int[]{1,-2,-1001,-1}),
+                Arguments.of(new int[]{-1001,1,2}),
+                Arguments.of(new int[]{1,2,-1001}),
+                Arguments.of(new int[]{1,2,1001,3,8}),
+                Arguments.of(new int[]{1001,1,2,3,8}),
+                Arguments.of(new int[]{1,2,3,8,1001})
+        );
     }
-    @Test
-    void shouldThrowException_withSingleElementArray(){
-        int[] intArray = new int[]{45};
-        Assertions.assertThrows(InvalidInputException.class, () -> tapeEquilibrium.findMinimumAbsoluteDifference(intArray));
+    @ParameterizedTest
+    @MethodSource("successData")
+    public void shouldFindMinimumAbsoluteDifference(int expected, int[] A) {
+        Assertions.assertEquals(expected, tapeEquilibrium.findMinimumAbsoluteDifference(A));
     }
-    @Test
-    void shouldThrowException_withArray_whenSizeMoreThan_100000(){
-        int[] intArray = IntStream.range(0,100001).toArray();
-        Assertions.assertThrows(InvalidInputException.class, () -> tapeEquilibrium.findMinimumAbsoluteDifference(intArray));
+    private static Stream<Arguments> successData() {
+        return Stream.of(
+                Arguments.of(1,  new int[]{3,1,2,4,3}),
+                Arguments.of(1,  new int[]{-3,-1,-2,-4,-3}),
+                Arguments.of(8,  new int[]{-1000,1,7,-3,1000,3,-6})
+        );
     }
-    @Test
-    void shouldThrowException_withArray_havingValueLessThanMinus1000(){
-        int[] intArray = new int[]{1,-2,-1001,-1};
-        Assertions.assertThrows(InvalidInputException.class, () -> tapeEquilibrium.findMinimumAbsoluteDifference(intArray));
-    }
-    @Test
-    void shouldThrowException_withArray_havingValueLessThanMinus1000_atFirstElement(){
-        int[] intArray = new int[]{-1001,1,2};
-        Assertions.assertThrows(InvalidInputException.class, () -> tapeEquilibrium.findMinimumAbsoluteDifference(intArray));
-    }
-    @Test
-    void shouldThrowException_withArray_havingValueLessThanMinus1000_atLastElement(){
-        int[] intArray = new int[]{1,2,-1001};
-        Assertions.assertThrows(InvalidInputException.class, () -> tapeEquilibrium.findMinimumAbsoluteDifference(intArray));
-    }
-    @Test
-    void shouldThrowException_withArray_havingValueMoreThan1000(){
-        int[] intArray = new int[]{1,2,1001,3,8};
-        Assertions.assertThrows(InvalidInputException.class, () -> tapeEquilibrium.findMinimumAbsoluteDifference(intArray));
-    }
-    @Test
-    void shouldThrowException_withArray_havingValueMoreThan1000_atFirstElement(){
-        int[] intArray = new int[]{1001,1,2,3,8};
-        Assertions.assertThrows(InvalidInputException.class, () -> tapeEquilibrium.findMinimumAbsoluteDifference(intArray));
-    }
-    @Test
-    void shouldThrowException_withArray_havingValueMoreThan1000_atLastElement(){
-        int[] intArray = new int[]{1,2,3,8,1001};
-        Assertions.assertThrows(InvalidInputException.class, () -> tapeEquilibrium.findMinimumAbsoluteDifference(intArray));
-    }
-
-    @Test
-    void shouldReturnValidResult_withArrayOfPositiveIntegers(){
-        int[] intArray = new int[]{3,1,2,4,3};
-        Assertions.assertEquals(1, tapeEquilibrium.findMinimumAbsoluteDifference(intArray));
-    }
-
-    @Test
-    void shouldReturnValidResult_withArrayOfNegativeIntegers(){
-        int[] intArray = new int[]{-3,-1,-2,-4,-3};
-        Assertions.assertEquals(1, tapeEquilibrium.findMinimumAbsoluteDifference(intArray));
-    }
-
-    @Test
-    void shouldReturnValidResult_withArrayOfMixSignedIntegers(){
-        int[] intArray = new int[]{-1000,1,7,-3,1000,3,-6};
-        Assertions.assertEquals(8, tapeEquilibrium.findMinimumAbsoluteDifference(intArray));
-    }
-
 }
