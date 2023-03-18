@@ -36,7 +36,7 @@ public abstract class TestMaxCounter {
 
     @ParameterizedTest
     @MethodSource("successData")
-    void shouldalCulateMaxCounters(int N, int[] A, List<Integer> expected) {
+    void shouldCalculateMaxCounters(int N, int[] A, List<Integer> expected) {
         int[] actual = maxCounter.calculateMaxCounters(N, A);
         List<Integer> actualList= Arrays.stream(actual).boxed().collect(Collectors.toList());
         Assertions.assertEquals(expected.toString(), actualList.toString());

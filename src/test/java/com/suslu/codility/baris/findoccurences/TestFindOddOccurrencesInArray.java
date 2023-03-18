@@ -29,7 +29,7 @@ public abstract class TestFindOddOccurrencesInArray {
 
     @ParameterizedTest
     @MethodSource("successData")
-    public void shouldRotate(int expected, int[] A) {
+    public void shouldFindOddOccurrences(int expected, int[] A) {
         Assertions.assertEquals(expected, findOddOccurrencesInArray.findOddOccurrences(A));
     }
     private static Stream<Arguments> successData() {

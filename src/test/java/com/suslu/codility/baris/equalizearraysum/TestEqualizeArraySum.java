@@ -33,7 +33,6 @@ public abstract class TestEqualizeArraySum {
         );
     }
 
-
     @ParameterizedTest
     @MethodSource("successData")
     public void shouldRotate(boolean expected, int[] a, int[] b) {

@@ -3,10 +3,13 @@ package com.suslu.codility.baris.permmissingelem;
 import com.suslu.codility.exception.InvalidInputException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.Arrays;
 import java.util.random.RandomGenerator;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public abstract class TestPermMissingElem {
 
@@ -15,39 +18,30 @@ public abstract class TestPermMissingElem {
     public TestPermMissingElem(PermMissingElem permMissingElem) {
         this.permMissingElem = permMissingElem;
     }
-    @Test
-    void shouldThrowException_withNullArray(){
-        Assertions.assertThrows(InvalidInputException.class, () -> permMissingElem.findMissingElement(null));
+    @ParameterizedTest
+    @MethodSource("exceptionData")
+    public void shouldThrowException(int[] A) {
+        Assertions.assertThrows(InvalidInputException.class, () -> permMissingElem.findMissingElement(A));
     }
-    @Test
-    void shouldReturnMissingElement_AsOne_withEmptyArray(){
-        int[] intArray = new int[]{};
-        Assertions.assertEquals(1, permMissingElem.findMissingElement(intArray));
+    private static Stream<Arguments> exceptionData() {
+        return Stream.of(
+                Arguments.of(null, null)
+        );
     }
-    @Test
-    void shouldReturnMissingElement_withValidArray(){
-        int[] intArray = new int[]{2,3,1,5};
-        Assertions.assertEquals(4, permMissingElem.findMissingElement(intArray));
+    @ParameterizedTest
+    @MethodSource("successData")
+    public void shouldFindMissingElement(int expected, int[] A) {
+        Assertions.assertEquals(expected, permMissingElem.findMissingElement(A));
     }
-    @Test
-    void shouldReturnMissingElement_withSingleElementArray_whenElementIs_1(){
-        int[] intArray = new int[]{1};
-        Assertions.assertEquals(2, permMissingElem.findMissingElement(intArray));
-    }
-    @Test
-    void shouldReturnMissingElement_withSingleElementArray_whenElementIs_2(){
-        int[] intArray = new int[]{2};
-        Assertions.assertEquals(1, permMissingElem.findMissingElement(intArray));
-    }
-    @Test
-    void shouldReturnMissingElement_withValidArray_whenFirstElementMissing(){
-        int[] intArray = new int[]{5,3,2,4};
-        Assertions.assertEquals(1, permMissingElem.findMissingElement(intArray));
-    }
-    @Test
-    void shouldReturnMissingElement_withValidArray_whenLastElementMissing(){
-        int[] intArray = new int[]{4,3,1,2};
-        Assertions.assertEquals(5, permMissingElem.findMissingElement(intArray));
+    private static Stream<Arguments> successData() {
+        return Stream.of(
+                Arguments.of(1, new int[]{}),
+                Arguments.of(4, new int[]{2,3,1,5}),
+                Arguments.of(2, new int[]{1}),
+                Arguments.of(1, new int[]{2}),
+                Arguments.of(1, new int[]{5,3,2,4}),
+                Arguments.of(5, new int[]{4,3,1,2})
+        );
     }
 
     @Test
@@ -61,10 +55,6 @@ public abstract class TestPermMissingElem {
         int missingValue = intArray[randomIndex];
         intArray[randomIndex] = elementCount;
         Assertions.assertEquals(missingValue, permMissingElem.findMissingElement(intArray));
-
-        System.out.println(missingValue);
-        Arrays.stream(intArray).forEach(value -> System.out.print(value+"-"));
-        System.out.println();
     }
 
 }
