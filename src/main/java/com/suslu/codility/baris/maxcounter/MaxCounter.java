@@ -2,6 +2,7 @@ package com.suslu.codility.baris.maxcounter;
 
 import com.suslu.codility.exception.InvalidInputException;
 
+//https://app.codility.com/programmers/lessons/4-counting_elements/max_counters/
 public interface MaxCounter {
     int[] calculateMaxCounters(int N, int[] A);
 
