@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-public class TestBinaryGap {
+public abstract class TestBinaryGap {
 
     private final BinaryGap binaryGap;
 
