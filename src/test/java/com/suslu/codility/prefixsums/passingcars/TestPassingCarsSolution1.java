@@ -1,4 +1,4 @@
-package com.suslu.codility.passingcars;
+package com.suslu.codility.prefixsums.passingcars;
 
 public class TestPassingCarsSolution1 extends TestPassingCars {
     public TestPassingCarsSolution1() {

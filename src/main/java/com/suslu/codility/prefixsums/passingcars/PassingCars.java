@@ -1,4 +1,4 @@
-package com.suslu.codility.passingcars;
+package com.suslu.codility.prefixsums.passingcars;
 
 import com.suslu.codility.exception.InvalidInputException;
 

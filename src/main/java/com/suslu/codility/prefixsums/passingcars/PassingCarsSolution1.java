@@ -1,4 +1,4 @@
-package com.suslu.codility.passingcars;
+package com.suslu.codility.prefixsums.passingcars;
 
 public class PassingCarsSolution1 implements PassingCars {
     @Override
