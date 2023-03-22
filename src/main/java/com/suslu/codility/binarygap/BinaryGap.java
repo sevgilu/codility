@@ -2,6 +2,7 @@ package com.suslu.codility.binarygap;
 
 import com.suslu.codility.exception.InvalidInputException;
 
+// https://app.codility.com/programmers/lessons/1-iterations/binary_gap/
 public interface BinaryGap {
     int findLongestBinaryGap(int N);
 
