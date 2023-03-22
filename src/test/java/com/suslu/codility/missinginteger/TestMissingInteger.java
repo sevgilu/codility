@@ -31,7 +31,7 @@ public abstract class TestMissingInteger {
     }
     @ParameterizedTest
     @MethodSource("successData")
-    public void shouldFindMissingElement(int expected, int[] A) {
+    public void shouldFindMinimumMissingInteger(int expected, int[] A) {
         Assertions.assertEquals(expected, missingInteger.findMinimumMissingPositiveInteger(A));
     }
     private static Stream<Arguments> successData() {
