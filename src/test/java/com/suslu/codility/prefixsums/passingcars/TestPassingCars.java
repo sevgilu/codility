@@ -1,7 +1,6 @@
 package com.suslu.codility.prefixsums.passingcars;
 
 import com.suslu.codility.exception.InvalidInputException;
-import com.suslu.codility.prefixsums.passingcars.PassingCars;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
